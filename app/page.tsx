@@ -6,10 +6,18 @@ import Sponsors from "@/components/shared/Sponsors";
 import { prisma } from "@/lib/prisma";
 
 const Home = async () => {
+  // Fetch jobs data from the database
   const jobs = await prisma.jobPosting.findMany({});
+
+  // Convert salary to string for each job
+  const jobsWithStringSalary = jobs.map((job) => ({
+    ...job,
+    salary: job.salary.toString(),
+  }));
+
   return (
     <>
-      <Hero jobs={jobs} />
+      <Hero jobs={jobsWithStringSalary} />
       <Jobs />
       <Sponsors />
       <About />
