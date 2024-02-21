@@ -17,7 +17,6 @@ const initialState = {
 
 const SearchForm = ({ jobs }: SearchFormProps) => {
   const [state, setState] = useState(initialState);
-  const [value, setValue] = useState("");
   const { setFilteredJobs } = useJobStore();
 
   useEffect(() => {
